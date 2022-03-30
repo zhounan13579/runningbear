@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      /* 
+第一步要知道，这张长图是多大的。
+w是1600 h是100 共8只小熊
+每只小熊就是宽200 高100的盒子。
+ */
+      body {
+        background-image: url(media/bg2.png), url(media/bg1.png);
+        background-repeat: no-repeat no-repeat;
+      }
+
+      div {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 220px;
+        background: url(media/bear.png) no-repeat;
+        /* 我们元素可以添加多个动画，用逗号分割 */
+        /* forwards停留在结束的状态 */
+        animation: bear 0.4s steps(8) infinite, move 3s forwards;
+      }
+
+      @keyframes bear {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          /* 往左走是负值 */
+          background-position: -1600px 0;
+        }
+      }
+
+      @keyframes move {
+        0% {
+          left: 0;
+        }
+        100% {
+          /* 这是跑到中间 */
+          left: 50%;
+          /* margin-left: -100px; */
+          /* 这个translate不用计算自己的宽度 */
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+</html>
